@@ -24,6 +24,13 @@ public class Student {
     public Student() {
     }
 
+    public Student(String email, String name, int age, String country) {
+        this.emailId = email;
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+
     // alter table student add foreign key constraint card references Card(id)
 
     @OneToOne
@@ -31,8 +38,35 @@ public class Student {
     @JsonIgnoreProperties("student")
     private Card card;
 
-    public Card getCard() {
-        return card;
+
+    @CreationTimestamp
+    private Date createdOn;
+
+    @UpdateTimestamp
+    private Date updatedOn;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -43,18 +77,36 @@ public class Student {
         this.age = age;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
     public void setCard(Card card) {
         this.card = card;
     }
 
-    @CreationTimestamp
-    private Date createdOn;
+    public Date getCreatedOn() {
+        return createdOn;
+    }
 
-    @UpdateTimestamp
-    private Date updatedOn;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
 
-    public Student(int age) {
-        this.age = age;
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 
     @Override
@@ -70,51 +122,5 @@ public class Student {
                 '}';
     }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getUpdatedOn() {
-        return updatedOn;
-    }
-
-    public void setUpdatedOn(Date updatedOn) {
-        this.updatedOn = updatedOn;
-    }
 }

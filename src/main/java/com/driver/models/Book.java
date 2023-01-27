@@ -32,19 +32,42 @@ public class Book {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean available;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("book")
     private List<Transaction> transactions;
 
     public Book() {
     }
 
-    public Author getAuthor() {
-        return author;
+    public Book(String name, Genre genre, Author author) {
+        this.name = name;
+        this.genre = genre;
+        this.author = author;
+        this.available = true;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public boolean isAvailable() {
@@ -63,28 +86,12 @@ public class Book {
         this.card = card;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public List<Transaction> getTransactions() {
