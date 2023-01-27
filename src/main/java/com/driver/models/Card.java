@@ -25,6 +25,10 @@ public class Card {
     @UpdateTimestamp
     private Date updatedOn;
 
+    public Card(Student student,CardStatus cardStatus){
+        this.student=student;
+        this.cardStatus=cardStatus;
+    }
     @Enumerated(value = EnumType.STRING)
     private CardStatus cardStatus;
 
@@ -34,5 +38,53 @@ public class Card {
 
     public Card(){
         this.cardStatus = CardStatus.ACTIVATED;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public CardStatus getCardStatus() {
+        return cardStatus;
+    }
+
+    public void setCardStatus(CardStatus cardStatus) {
+        this.cardStatus = cardStatus;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 }
