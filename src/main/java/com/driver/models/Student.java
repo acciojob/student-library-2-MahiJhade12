@@ -53,6 +53,10 @@ public class Student {
     @UpdateTimestamp
     private Date updatedOn;
 
+    public Student(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Student{" +

@@ -17,10 +17,10 @@ public class CardService {
     public Card createAndReturn(Student student){
         //link student with a new card
 
-        Card card = new Card(student,CardStatus.ACTIVATED);
+        Card card = new Card();
         card.setStudent(student);
         card.setCardStatus(CardStatus.ACTIVATED);
-
+         cardRepository3.save(card);
         return card;
     }
 

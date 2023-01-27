@@ -15,7 +15,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(mappedBy = "card", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "card", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("card")
     private Student student;
 
@@ -25,14 +25,10 @@ public class Card {
     @UpdateTimestamp
     private Date updatedOn;
 
-    public Card(Student student,CardStatus cardStatus){
-        this.student=student;
-        this.cardStatus=cardStatus;
-    }
     @Enumerated(value = EnumType.STRING)
     private CardStatus cardStatus;
 
-    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("card")
     private List<Book> books;
 
@@ -40,28 +36,8 @@ public class Card {
         this.cardStatus = CardStatus.ACTIVATED;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    public CardStatus getCardStatus() {
-        return cardStatus;
-    }
-
-    public void setCardStatus(CardStatus cardStatus) {
-        this.cardStatus = cardStatus;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
+    public Card(Student student, CardStatus activated) {
+        this.student=student;
     }
 
     public int getId() {
@@ -80,11 +56,35 @@ public class Card {
         this.student = student;
     }
 
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
     public Date getUpdatedOn() {
         return updatedOn;
     }
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    public CardStatus getCardStatus() {
+        return cardStatus;
+    }
+
+    public void setCardStatus(CardStatus cardStatus) {
+        this.cardStatus = cardStatus;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
